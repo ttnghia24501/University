@@ -80,10 +80,6 @@ namespace Model.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<Student>()
-                .Property(e => e.Status)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Student>()
                 .Property(e => e.Password)
                 .IsUnicode(false);
 

@@ -32,9 +32,10 @@ namespace Model.EF
         [Required]
         [StringLength(255)]
         public string Email { get; set; }
-
-        [StringLength(50)]
+        [Required]
+        [StringLength(250)]
         public string Password { get; set; }
+        public bool Status { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Subject> Subjects { get; set; }

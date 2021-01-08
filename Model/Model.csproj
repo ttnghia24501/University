@@ -58,7 +58,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\ClassDAO.cs" />
+    <Compile Include="DAO\DepartmentDAO.cs" />
     <Compile Include="DAO\ManagerDAO.cs" />
+    <Compile Include="DAO\ScheduleDAO.cs" />
+    <Compile Include="DAO\StudentDAO.cs" />
+    <Compile Include="DAO\SubjectDAO.cs" />
+    <Compile Include="DAO\TeacherDAO.cs" />
+    <Compile Include="DAO\TestDAO.cs" />
     <Compile Include="EF\Class.cs" />
     <Compile Include="EF\Department.cs" />
     <Compile Include="EF\Manager.cs" />

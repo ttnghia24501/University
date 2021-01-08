@@ -13,112 +13,118 @@ using PagedList;
 
 namespace University.Areas.Admin.Controllers
 {
-    public class ManagersController : BaseController
+    public class SchedulesController : BaseController
     {
         private UniversityDbContext db = new UniversityDbContext();
 
-        // GET: Admin/Managers
-        public ActionResult Index(string searchString, int page = 1,int pageSize = 10) 
+        // GET: Admin/Schedules
+        public ActionResult Index(int page = 1, int pageSize = 10)
         {
-            var dao = new ManagerDAO();
-            var model = dao.ListAllPaging(searchString, page, pageSize);
-            ViewBag.SearchString = searchString;
+            var dao = new ScheduleDAO();
+            var model = dao.ListAllPaging(page, pageSize);
+            var schedules = db.Schedules.Include(s => s.Student).Include(s => s.Subject);
             return View(model);
         }
 
-        // GET: Admin/Managers/Details/5
+        // GET: Admin/Schedules/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Manager manager = db.Managers.Find(id);
-            if (manager == null)
+            Schedule schedule = db.Schedules.Find(id);
+            if (schedule == null)
             {
                 return HttpNotFound();
             }
-            return View(manager);
+            return View(schedule);
         }
 
-        // GET: Admin/Managers/Create
+        // GET: Admin/Schedules/Create
         public ActionResult Create()
         {
+            ViewBag.StudentId = new SelectList(db.Students, "Id", "Name");
+            ViewBag.SubjectId = new SelectList(db.Subjects, "Id", "Name");
             return View();
         }
 
-        // POST: Admin/Managers/Create
+        // POST: Admin/Schedules/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Image,Birthday,PhoneNumber,Email,Password,Status")] Manager manager)
+        public ActionResult Create([Bind(Include = "Id,Date,SubjectId,StudentId")] Schedule schedule)
         {
             if (ModelState.IsValid)
             {
-                var encryptedMd5Pas = Encryptor.MD5Hash(manager.Password);
-                manager.Password = encryptedMd5Pas;
-                db.Managers.Add(manager);
+                db.Schedules.Add(schedule);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(manager);
+            ViewBag.StudentId = new SelectList(db.Students, "Id", "Name", schedule.StudentId);
+            ViewBag.SubjectId = new SelectList(db.Subjects, "Id", "Name", schedule.SubjectId);
+            return View(schedule);
         }
 
-        // GET: Admin/Managers/Edit/5
+        // GET: Admin/Schedules/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Manager manager = db.Managers.Find(id);
-            if (manager == null)
+            Schedule schedule = db.Schedules.Find(id);
+            if (schedule == null)
             {
                 return HttpNotFound();
             }
-            return View(manager);
+            ViewBag.StudentId = new SelectList(db.Students, "Id", "Name", schedule.StudentId);
+            ViewBag.SubjectId = new SelectList(db.Subjects, "Id", "Name", schedule.SubjectId);
+            return View(schedule);
         }
 
-        // POST: Admin/Managers/Edit/5
+        // POST: Admin/Schedules/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Image,Birthday,PhoneNumber,Email,Password,Status")] Manager manager)
+        public ActionResult Edit([Bind(Include = "Id,Date,SubjectId,StudentId")] Schedule schedule)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(manager).State = EntityState.Modified;
+                db.Entry(schedule).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(manager);
+            ViewBag.StudentId = new SelectList(db.Students, "Id", "Name", schedule.StudentId);
+            ViewBag.SubjectId = new SelectList(db.Subjects, "Id", "Name", schedule.SubjectId);
+            return View(schedule);
         }
 
-        // GET: Admin/Managers/Delete/5
+        // GET: Admin/Schedules/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Manager manager = db.Managers.Find(id);
-            if (manager == null)
+            Schedule schedule = db.Schedules.Find(id);
+            if (schedule == null)
             {
                 return HttpNotFound();
             }
-            return View(manager);
+            return View(schedule);
         }
 
-        // POST: Admin/Managers/Delete/5
+        // POST: Admin/Schedules/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Manager manager = db.Managers.Find(id);
-            db.Managers.Remove(manager);
+            Schedule schedule = db.Schedules.Find(id);
+            db.Schedules.Remove(schedule);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

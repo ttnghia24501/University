@@ -1,16 +1,14 @@
-﻿@model PagedList.IPagedList<Model.EF.Manager>
+﻿@model PagedList.IPagedList<Model.EF.Subject>
 @using PagedList.Mvc;
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 @section header{
-    Manager
-}
+    Subject}
 @section search{
-
-
     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
         <div class="input-group">
             <input type="text" value="@ViewBag.SearchString" class="form-control bg-light border-0 small" name="searchString" placeholder="Search for...">
@@ -22,13 +20,12 @@
         </div>
     </form>
 }
-
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">List Schedule</h6>
+        <h6 class="m-0 font-weight-bold text-primary">List Subject</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -39,22 +36,13 @@
                             Name
                         </th>
                         <th>
-                            Image
+                           Student Name
                         </th>
                         <th>
-                            Birthday
+                           Teacher Name
                         </th>
                         <th>
-                            PhoneNumber
-                        </th>
-                        <th>
-                            Email
-                        </th>
-                        <th>
-                            Password
-                        </th>
-                        <th>
-                            Status
+                           Status
                         </th>
                         <th>Action</th>
                     </tr>
@@ -67,27 +55,18 @@
                                 @Html.DisplayFor(modelItem => item.Name)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Image)
+                                @Html.DisplayFor(modelItem => item.Student.Name)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Birthday)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PhoneNumber)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Email)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Password)
+                                @Html.DisplayFor(modelItem => item.Teacher.Name)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Status)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                             </td>
                         </tr>
                     }

@@ -20,6 +20,6 @@ namespace University.Areas.Admin.Controllers
                     RouteValueDictionary(new { controller = "Login",action = "Index", Area = "Admin" }));
             }
             base.OnActionExecuting(filterContext);
-        }
+        }       
     }
 }

@@ -1,0 +1,45 @@
+﻿<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center">
+        <img class="img-profile rounded-circle" src="~/Assets/Image/LogoITM.png" style="height:65px" !important>
+        <div class="sidebar-brand-text mx-3">ITM University</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <li class="nav-item">
+        <a class="nav-link" @Html.ActionLink("Manager", "Index", "Managers")</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" @Html.ActionLink("Student", "Index", "Students")</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" @Html.ActionLink("Teacher", "Index", "Teachers")</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" @Html.ActionLink("Subject", "Index", "Subjects")</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" @Html.ActionLink("Class", "Index", "Classes")</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" @Html.ActionLink("Department", "Index", "Departments")</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" @Html.ActionLink("Schedule", "Index", "Schedules")</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" @Html.ActionLink("Test", "Index", "Tests")</a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+</ul>

@@ -82,7 +82,7 @@
                                 @Html.DisplayFor(modelItem => item.Password)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Status)
+                               @(item.Status ? "Active" :"Locked")
                             </td>
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |

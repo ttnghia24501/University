@@ -1,13 +1,14 @@
-﻿@model PagedList.IPagedList<Model.EF.Manager>
-@using PagedList.Mvc;
+﻿@model PagedList.IPagedList<Model.EF.StudentSubject>
+    @using PagedList.Mvc;
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 @section header{
-    Manager
-}
+    subject registration}
+
 @section search{
 
 
@@ -22,13 +23,9 @@
         </div>
     </form>
 }
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">List Schedule</h6>
+        <h6 class="m-0 font-weight-bold text-primary">List Subject Registration</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -36,25 +33,20 @@
                 <thead>
                     <tr>
                         <th>
-                            Name
+                            Student Name
+                        </th>
+
+                        <th>
+                            Student Email
                         </th>
                         <th>
-                            Image
+                            Class Name
                         </th>
                         <th>
-                            Birthday
+                            Department Name
                         </th>
                         <th>
-                            PhoneNumber
-                        </th>
-                        <th>
-                            Email
-                        </th>
-                        <th>
-                            Password
-                        </th>
-                        <th>
-                            Status
+                            Subject Name
                         </th>
                         <th>Action</th>
                     </tr>
@@ -64,25 +56,19 @@
                     {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Name)
+                            @Html.DisplayFor(modelItem => item.StudentName)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Image)
+                            @Html.DisplayFor(modelItem => item.StudentEmail)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Birthday)
+                            @Html.DisplayFor(modelItem => item.Class1.Name)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                            @Html.DisplayFor(modelItem => item.Department1.Name)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Password)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Status)
+                            @Html.DisplayFor(modelItem => item.Subject1.Name)
                         </td>
                         <td>
                             @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
@@ -97,3 +83,4 @@
         </div>
     </div>
 </div>
+

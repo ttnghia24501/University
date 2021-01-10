@@ -33,37 +33,40 @@
                 <thead>
                     <tr>
                         <th>
-                           Name
+                            Name
                         </th>
                         <th>
-                           Image
+                            Image
                         </th>
                         <th>
                             FatherName
                         </th>
                         <th>
-                           MotherName
+                            MotherName
                         </th>
                         <th>
-                           Birthday
+                            Birthday
                         </th>
                         <th>
-                           Gender
+                            Gender
                         </th>
                         <th>
                             ResidentialAddress
                         </th>
                         <th>
-                           PermanentAddress
+                            PermanentAddress
                         </th>
                         <th>
-                           SportDetails
+                            SportDetails
                         </th>
                         <th>
-                           Status
+                            Email
                         </th>
                         <th>
-                           Password
+                            Password
+                        </th>
+                        <th>
+                            Status
                         </th>
                         <th>Action</th>
                     </tr>
@@ -71,46 +74,49 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Image)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.FatherName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.MotherName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Birthday)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Gender)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ResidentialAddress)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PermanentAddress)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.SportDetails)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Status)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Password)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Image)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FatherName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MotherName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Birthday)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Gender)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ResidentialAddress)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PermanentAddress)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SportDetails)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Password)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>

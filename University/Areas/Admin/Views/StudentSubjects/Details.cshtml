@@ -1,0 +1,59 @@
+﻿@model Model.EF.StudentSubject
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section header{
+   Detail subject registration}
+<div>
+    <h4>StudentSubject</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Class1.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Class1.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Department1.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department1.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Subject1.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subject1.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentEmail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -20,7 +20,7 @@ namespace Model.DAO
             IQueryable<Student> model = db.Students;
             if (!string.IsNullOrEmpty(searchString))
             {
-                model = model.Where(x=> x.Name.Contains(searchString));
+                model = model.Where(x=> x.Name.Contains(searchString) || x.Email.Contains(searchString));
             }
             return model.OrderByDescending(x => x.Name).ToPagedList(page, pageSize);
         }

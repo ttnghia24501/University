@@ -17,6 +17,7 @@ namespace Model.EF
         public virtual DbSet<Manager> Managers { get; set; }
         public virtual DbSet<Schedule> Schedules { get; set; }
         public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<StudentSubject> StudentSubjects { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
         public virtual DbSet<Teacher> Teachers { get; set; }
         public virtual DbSet<Test> Tests { get; set; }
@@ -27,9 +28,19 @@ namespace Model.EF
                 .Property(e => e.Name)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Class>()
+                .HasMany(e => e.StudentSubjects)
+                .WithOptional(e => e.Class1)
+                .HasForeignKey(e => e.Class);
+
             modelBuilder.Entity<Department>()
                 .Property(e => e.Name)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Department>()
+                .HasMany(e => e.StudentSubjects)
+                .WithOptional(e => e.Department1)
+                .HasForeignKey(e => e.Department);
 
             modelBuilder.Entity<Manager>()
                 .Property(e => e.Name)
@@ -41,7 +52,7 @@ namespace Model.EF
 
             modelBuilder.Entity<Manager>()
                 .Property(e => e.Email)
-                .IsFixedLength();
+                .IsUnicode(false);
 
             modelBuilder.Entity<Manager>()
                 .Property(e => e.Password)
@@ -80,7 +91,19 @@ namespace Model.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<Student>()
+                .Property(e => e.Email)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Student>()
                 .Property(e => e.Password)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<StudentSubject>()
+                .Property(e => e.StudentName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<StudentSubject>()
+                .Property(e => e.StudentEmail)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Subject>()
@@ -90,6 +113,11 @@ namespace Model.EF
             modelBuilder.Entity<Subject>()
                 .Property(e => e.Status)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Subject>()
+                .HasMany(e => e.StudentSubjects)
+                .WithOptional(e => e.Subject1)
+                .HasForeignKey(e => e.Subject);
 
             modelBuilder.Entity<Teacher>()
                 .Property(e => e.Name)

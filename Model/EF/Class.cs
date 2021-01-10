@@ -9,6 +9,12 @@ namespace Model.EF
     [Table("Class")]
     public partial class Class
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Class()
+        {
+            StudentSubjects = new HashSet<StudentSubject>();
+        }
+
         public int Id { get; set; }
 
         [Required]
@@ -18,5 +24,8 @@ namespace Model.EF
         public int? DepartmentId { get; set; }
 
         public virtual Department Department { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentSubject> StudentSubjects { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace University.Areas.Admin.Controllers
         private UniversityDbContext db = new UniversityDbContext();
 
         // GET: Admin/Students
-        public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
+        public ActionResult Index(string searchString, int page = 1, int pageSize = 4)
         {
             var dao = new StudentDAO();
             var model = dao.ListAllPaging(searchString, page, pageSize);
@@ -52,7 +52,7 @@ namespace University.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Image,FatherName,MotherName,Birthday,Gender,ResidentialAddress,PermanentAddress,SportDetails,Status,Password")] Student student)
+        public ActionResult Create([Bind(Include = "Id,Name,Image,FatherName,MotherName,Birthday,Gender,ResidentialAddress,PermanentAddress,SportDetails,Email,Password,Status")] Student student)
         {
             if (ModelState.IsValid)
             {
@@ -84,7 +84,7 @@ namespace University.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Image,FatherName,MotherName,Birthday,Gender,ResidentialAddress,PermanentAddress,SportDetails,Status,Password")] Student student)
+        public ActionResult Edit([Bind(Include = "Id,Name,Image,FatherName,MotherName,Birthday,Gender,ResidentialAddress,PermanentAddress,SportDetails,Email,Password,Status")] Student student)
         {
             if (ModelState.IsValid)
             {

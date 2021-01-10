@@ -63,6 +63,7 @@
     <Compile Include="DAO\ManagerDAO.cs" />
     <Compile Include="DAO\ScheduleDAO.cs" />
     <Compile Include="DAO\StudentDAO.cs" />
+    <Compile Include="DAO\StudentSubjectDAO.cs" />
     <Compile Include="DAO\SubjectDAO.cs" />
     <Compile Include="DAO\TeacherDAO.cs" />
     <Compile Include="DAO\TestDAO.cs" />
@@ -72,12 +73,16 @@
     <Compile Include="EF\UniversityDbContext.cs" />
     <Compile Include="EF\Schedule.cs" />
     <Compile Include="EF\Student.cs" />
+    <Compile Include="EF\StudentSubject.cs" />
     <Compile Include="EF\Subject.cs" />
     <Compile Include="EF\Teacher.cs" />
     <Compile Include="EF\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\University\Areas\Admin\Views\web.config">
+      <Link>web.config</Link>
+    </None>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>

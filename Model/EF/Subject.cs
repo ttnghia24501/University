@@ -13,6 +13,7 @@ namespace Model.EF
         public Subject()
         {
             Schedules = new HashSet<Schedule>();
+            StudentSubjects = new HashSet<StudentSubject>();
             Tests = new HashSet<Test>();
         }
 
@@ -34,6 +35,9 @@ namespace Model.EF
         public virtual ICollection<Schedule> Schedules { get; set; }
 
         public virtual Student Student { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentSubject> StudentSubjects { get; set; }
 
         public virtual Teacher Teacher { get; set; }
 

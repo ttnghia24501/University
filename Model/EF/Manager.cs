@@ -11,23 +11,23 @@ namespace Model.EF
     {
         public int ID { get; set; }
 
-        [StringLength(255)]
+        [StringLength(250)]
         public string Name { get; set; }
 
-        [StringLength(255)]
+        [StringLength(250)]
         public string Image { get; set; }
- 
-        public DateTime Birthday { get; set; }
 
-        public int PhoneNumber { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime? Birthday { get; set; }
 
-        [Required]
+        public int? PhoneNumber { get; set; }
+
         [StringLength(255)]
         public string Email { get; set; }
 
-        [Required]
         [StringLength(255)]
         public string Password { get; set; }
-        public bool Status { get; set; }
+
+        public bool? Status { get; set; }
     }
 }

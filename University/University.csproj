@@ -141,13 +141,20 @@
     <Compile Include="Areas\Admin\Controllers\ManagersController.cs" />
     <Compile Include="Areas\Admin\Controllers\SchedulesController.cs" />
     <Compile Include="Areas\Admin\Controllers\StudentsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StudentSubjectsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SubjectsController.cs" />
     <Compile Include="Areas\Admin\Controllers\TeachersController.cs" />
     <Compile Include="Areas\Admin\Controllers\TestsController.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Common\Common Constants.cs" />
     <Compile Include="Common\Encryptor.cs" />
+    <Compile Include="Controllers\AboutUsController.cs" />
+    <Compile Include="Controllers\ContactUsController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\CourseDetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
+    <Compile Include="Controllers\StudentSubjectsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1867,8 +1874,7 @@
     <Content Include="Assets\client\images\course_5.jpg" />
     <Content Include="Assets\client\images\course_6.jpg" />
     <Content Include="Assets\client\images\hero_1.jpg" />
-    <Content Include="Assets\client\images\logo.jpg" />
-    <Content Include="Assets\client\images\logo.png" />
+    <Content Include="Assets\client\images\LogoITMresize.png" />
     <Content Include="Assets\client\images\person_1.jpg" />
     <Content Include="Assets\client\images\person_2.jpg" />
     <Content Include="Assets\client\images\person_3.jpg" />
@@ -2219,6 +2225,10 @@
     <Content Include="Assets\client\scss\_site-base.scss" />
     <Content Include="Assets\client\scss\_site-blocks.scss" />
     <Content Include="Assets\client\scss\_site-navbar.scss" />
+    <Content Include="Areas\Admin\Views\StudentSubjects\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\StudentSubjects\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\StudentSubjects\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\StudentSubjects\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2240,6 +2250,12 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Students\Create.cshtml" />
+    <Content Include="Views\StudentSubjects\Create.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\CourseDetail\Index.cshtml" />
+    <Content Include="Views\AboutUs\Index.cshtml" />
+    <Content Include="Views\ContactUs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

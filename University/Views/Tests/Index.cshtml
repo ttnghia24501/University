@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Model.EF.Test>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section search{
+    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <div class="input-group">
+            <input type="text" class="form-control bg-light border-0 small" name="searchString" placeholder="Search for...">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                    Search
+                </button>
+            </div>
+        </div>
+    </form>
+}
+    @section banner{
+        <div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" style=" background-image: url('../../Assets/client/images/bg_1.jpg');">
+            <div class="container">
+                <div class="row align-items-end">
+                    <div class="col-lg-7">
+                        <h2 class="mb-0">Mark</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                    </div>
+                </div>
+            </div>
+        </div> }
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Student.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Subject.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Mark)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Attendance)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Note)
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Student.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Subject.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mark)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Attendance)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Note)
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+

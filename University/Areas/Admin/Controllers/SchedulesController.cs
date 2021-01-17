@@ -22,7 +22,7 @@ namespace University.Areas.Admin.Controllers
         {
             var dao = new ScheduleDAO();
             var model = dao.ListAllPaging(page, pageSize);
-            var schedules = db.Schedules.Include(s => s.Student).Include(s => s.Subject);
+            var schedules = db.Schedules.Include(s => s.Class).Include(s => s.Subject);
             return View(model);
         }
 
@@ -44,7 +44,7 @@ namespace University.Areas.Admin.Controllers
         // GET: Admin/Schedules/Create
         public ActionResult Create()
         {
-            ViewBag.StudentId = new SelectList(db.Students, "Id", "Name");
+            ViewBag.StudentId = new SelectList(db.Classes, "Id", "Name");
             ViewBag.SubjectId = new SelectList(db.Subjects, "Id", "Name");
             return View();
         }
@@ -54,7 +54,7 @@ namespace University.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Date,SubjectId,StudentId")] Schedule schedule)
+        public ActionResult Create([Bind(Include = "Id,Date,SubjectId,ClassId")] Schedule schedule)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +63,7 @@ namespace University.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.StudentId = new SelectList(db.Students, "Id", "Name", schedule.StudentId);
+            ViewBag.StudentId = new SelectList(db.Students, "Id", "Name", schedule.ClassId);
             ViewBag.SubjectId = new SelectList(db.Subjects, "Id", "Name", schedule.SubjectId);
             return View(schedule);
         }
@@ -80,7 +80,7 @@ namespace University.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.StudentId = new SelectList(db.Students, "Id", "Name", schedule.StudentId);
+            ViewBag.StudentId = new SelectList(db.Students, "Id", "Name", schedule.ClassId);
             ViewBag.SubjectId = new SelectList(db.Subjects, "Id", "Name", schedule.SubjectId);
             return View(schedule);
         }
@@ -90,7 +90,7 @@ namespace University.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Date,SubjectId,StudentId")] Schedule schedule)
+        public ActionResult Edit([Bind(Include = "Id,Date,SubjectId,ClassId")] Schedule schedule)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +98,7 @@ namespace University.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.StudentId = new SelectList(db.Students, "Id", "Name", schedule.StudentId);
+            ViewBag.StudentId = new SelectList(db.Students, "Id", "Name", schedule.ClassId);
             ViewBag.SubjectId = new SelectList(db.Subjects, "Id", "Name", schedule.SubjectId);
             return View(schedule);
         }

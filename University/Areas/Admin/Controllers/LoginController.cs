@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using Model.DAO;
 using University.Common;
+using Xamarin.Essentials;
+using System.Web.Security;
 
 namespace University.Areas.Admin.Controllers
 {
@@ -50,6 +52,11 @@ namespace University.Areas.Admin.Controllers
             }
             return View("Index");
             
+        }
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Login");
         }
     }
 }

@@ -19,6 +19,12 @@ namespace University
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "University.Controllers" }
             );
+            routes.MapRoute(
+                name: "Login",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Students", action = "Login", id = UrlParameter.Optional },
+                namespaces: new[] { "University.Controllers" }
+            );
         }
     }
 }

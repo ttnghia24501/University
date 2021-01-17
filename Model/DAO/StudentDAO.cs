@@ -24,6 +24,32 @@ namespace Model.DAO
             }
             return model.OrderByDescending(x => x.Name).ToPagedList(page, pageSize);
         }
+        public Student GetById(string email)
+        {
+            return db.Students.SingleOrDefault(x => x.Email == email);
+        }
+        public int Login(string email, string passWord)
+        {
+            var result = db.Students.SingleOrDefault(x => x.Email == email);
+            if (result == null)
+            {
+                return 0;
+            }
+            else
+            {
+                if (result.Status == false)
+                {
+                    return -1;
+                }
+                else
+                {
+                    if (result.Password == passWord)
+                        return 1;
+                    else
+                        return -2;
+                }
+            }
+        }
     }   
 }
 

@@ -13,16 +13,15 @@ using PagedList;
 
 namespace University.Areas.Admin.Controllers
 {
-    public class SubjectsController : BaseController
+    public class SubjectsController : Controller
     {
         private UniversityDbContext db = new UniversityDbContext();
 
         // GET: Admin/Subjects
-        public ActionResult Index(string searchString,int page = 1,int pageSize = 10)
+        public ActionResult Index(int page = 1, int pageSize = 10)
         {
             var dao = new SubjectDAO();
-            var model = dao.ListAllPaging(searchString, page, pageSize);
-            ViewBag.SearchString = searchString;
+            var model = dao.ListAllPaging(page, pageSize);
             var subjects = db.Subjects.Include(s => s.Student).Include(s => s.Teacher);
             return View(model);
         }
@@ -55,7 +54,7 @@ namespace University.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,TeacherId,StudentId,Status")] Subject subject)
+        public ActionResult Create([Bind(Include = "Id,Name,StudentId,TeacherId,Status")] Subject subject)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +90,7 @@ namespace University.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,TeacherId,StudentId,Status")] Subject subject)
+        public ActionResult Edit([Bind(Include = "Id,Name,StudentId,TeacherId,Status")] Subject subject)
         {
             if (ModelState.IsValid)
             {

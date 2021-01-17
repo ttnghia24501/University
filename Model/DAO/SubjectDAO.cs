@@ -15,14 +15,9 @@ namespace Model.DAO
         {
             db = new UniversityDbContext();
         }
-        public IEnumerable<Subject> ListAllPaging(string searchString,int page,int pageSize)
+        public IEnumerable<Subject>ListAllPaging(int page,int pageSize)
         {
-            IQueryable<Subject> model = db.Subjects;
-                if (!string.IsNullOrEmpty(searchString))
-            {
-                model = model.Where(x => x.Name.Contains(searchString));
-            }
-            return model.OrderByDescending(x => x.Name).ToPagedList(page, pageSize);
+            return db.Subjects.OrderByDescending(x => x.Name).ToPagedList(page, pageSize);
         }
     }
 }
